@@ -1,5 +1,5 @@
-import connect from '~/utils/connect';
-import HomeView from '~/views/home';
+import connect from '~/util/connect';
+import HomeView from '~/view/home';
 
 const HomeContainer = connect(
   state => {

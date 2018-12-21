@@ -1,8 +1,8 @@
 import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
-import { stores } from './stores';
-import Home from './pages/home';
+import { stores } from './store';
+import Home from './page/home';
 
 function RouterConfig() {
   return (
