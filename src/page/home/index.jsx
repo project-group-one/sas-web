@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Banner from './banner';
 import Nav from './nav';
 import News from './news';
+import HomeLink from './link'
 
 class Home extends Component {
   render() {
@@ -25,6 +26,11 @@ class Home extends Component {
         <div className="home-news m-b-50">
           <div className="w">
             <News />
+          </div>
+        </div>
+        <div className="home-link m-b-100">
+          <div className="w">
+            <HomeLink />
           </div>
         </div>
         <div className="home-bottom">
