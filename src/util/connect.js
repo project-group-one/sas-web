@@ -1,6 +1,7 @@
 /**
  * 获取mobx Store中的状态和action方法
  * 简单模仿redux中的connect
+ * 注意: 该container组件会过滤掉任意store同名属性, 即使该属性的值不是store
  */
 import React from 'react';
 import { toJS } from 'mobx';
