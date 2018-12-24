@@ -11,8 +11,7 @@ const HomeContainer = connect(
     return {
       getUser: dispatch.globalStore.getUser
     };
-  },
-  HomeView
-);
+  }
+)(HomeView);
 
 export default HomeContainer;
