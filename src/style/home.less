@@ -34,7 +34,8 @@
   .home-nav {
     .w {
       background-color: #f1f4fa;
-      a {
+      .home-nav-item {
+        position: relative;
         display: inline-block;
         box-sizing: border-box;
         width: 25%;
@@ -43,13 +44,14 @@
         font-size: 18px;
         text-align: center;
         border-left: 1px solid #eee;
-      }
-      a:nth-child(1) {
-        border-left: 0;
-      }
-      a:hover {
-        color: #00a4ff;
-        background-color: #f9fbff;
+        cursor: pointer;
+        &:nth-child(1) {
+          border-left: 0;
+        }
+        &:hover {
+          color: #00a4ff;
+          background-color: #f9fbff;
+        }
       }
     }
   }
@@ -130,6 +132,7 @@
         text-align: center;
         color: #fff;
         background-color: #00a4ff;
+        cursor: pointer;
         &:hover {
           background-color: #1F99E5;
         }
@@ -141,6 +144,14 @@
     .w {
       padding: 20px 0;
       text-align: center;
+    }
+  }
+}
+
+.home-nav-item-dropdown {
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-item {
+      display: inline-block;
     }
   }
 }

@@ -3,19 +3,25 @@ import { Dropdown, Menu } from 'antd';
 
 const data = [
   {
-    name: '国家级食品安全监测机构',
+    name: '国家级食品安全监督机构',
     children: [{ name: '国家市场监督管理总局', url: '/' }]
   },
   {
-    name: '省级食品安全监测机构',
+    name: '省级食品安全监督机构',
+    children: [
+      {name: '浙江省食品药品监督管理局', url: '/'},
+      {name: '江苏省食品药品监督管理局', url: '/'},
+      {name: '上海市食品药品监督管理局', url: '/'},
+      {name: '山东省食品药品监督管理局', url: '/'},
+      {name: '北京市食品药品监督管理局', url: '/'}
+    ]
+  },
+  {
+    name: '市级食品安全监督机构',
     children: []
   },
   {
-    name: '市级食品安全监测机构',
-    children: []
-  },
-  {
-    name: '县级食品安全监测机构',
+    name: '县级食品安全监督机构',
     children: []
   }
 ];
@@ -37,9 +43,9 @@ const HomeLink = () => {
   };
   return (
     <div className="home-link-list">
-      {data.map(item => {
+      {data.map((item, index) => {
         return (
-          <Dropdown key={item.name} trigger={['click', 'hover']} overlay={renderMenu(item.children)}>
+          <Dropdown key={item.name + index} trigger={['click']} overlay={renderMenu(item.children)}>
             <div className="home-link-item">{item.name}</div>
           </Dropdown>
         );
