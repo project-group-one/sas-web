@@ -134,7 +134,7 @@
         background-color: #00a4ff;
         cursor: pointer;
         &:hover {
-          background-color: #1F99E5;
+          background-color: #FFB500;
         }
       }
     }
@@ -148,15 +148,28 @@
   }
 }
 
+.home-link-dropdown {
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-item {
+      &:hover {
+        background-color: #FFB500;
+        a {
+          color: #fff;
+        }
+      }
+      &.ant-dropdown-menu-active {
+        background: #FFB500;
+      }
+      width: 300px;
+      text-align: center;
+    }
+  }
+ }
+
 .home-nav-item-dropdown {
   .ant-dropdown-menu {
     .ant-dropdown-menu-item {
-      &-active {
-        background: #FFB500;
-      }
       display: inline-block;
-      width: 300px;
-      text-align: center;
     }
   }
 }

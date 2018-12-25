@@ -53,7 +53,7 @@ const HomeLink = () => {
     <div className="home-link-list">
       {data.map((item, index) => {
         return (
-          <Dropdown key={item.name + index} trigger={['hover']} overlay={renderMenu(item.children)}>
+          <Dropdown overlayClassName="home-link-dropdown" key={item.name + index} trigger={['hover']} overlay={renderMenu(item.children)}>
             <div className="home-link-item">{item.name}</div>
           </Dropdown>
         );
