@@ -2,6 +2,13 @@
   .home-header {
     padding: 10px 0;
     font-size: 30px;
+
+    .home-search {
+      display: inline-block;
+      .home-search-input {
+        width: 200px;
+      }
+    }
   }
   .home-banner {
     height: 400px;
@@ -43,7 +50,8 @@
         color: #333;
         font-size: 18px;
         text-align: center;
-        border-left: 1px solid #eee;
+        border-left: 1px solid #dadee4;
+        background: #dfeaff;
         cursor: pointer;
         &:nth-child(1) {
           border-left: 0;
@@ -123,7 +131,7 @@
   .home-link {
     .home-link-list {
       margin: 0 auto;
-      width: 1080px;
+      width: 1200px;
       .home-link-item {
         display: inline-block;
         width: 25%;
@@ -134,7 +142,7 @@
         background-color: #00a4ff;
         cursor: pointer;
         &:hover {
-          background-color: #1F99E5;
+          background-color: #FFB500;
         }
       }
     }
@@ -147,6 +155,24 @@
     }
   }
 }
+
+.home-link-dropdown {
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-item {
+      &:hover {
+        background-color: #FFB500;
+        a {
+          color: #fff;
+        }
+      }
+      &.ant-dropdown-menu-active {
+        background: #FFB500;
+      }
+      width: 300px;
+      text-align: center;
+    }
+  }
+ }
 
 .home-nav-item-dropdown {
   .ant-dropdown-menu {

@@ -70,7 +70,7 @@ const Nav = () => {
           return (
             <Dropdown
               key={l.name}
-              trigger={['click']}
+              trigger={['hover']}
               overlayClassName="home-nav-item-dropdown"
               overlay={renderMenu(l.children)}
             >

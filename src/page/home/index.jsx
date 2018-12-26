@@ -3,7 +3,8 @@ import HomeNewsContainer from '~/container/homeNews'
 import Banner from './banner';
 import Nav from './nav';
 import News from './news';
-import HomeLink from './link'
+import HomeLink from './link';
+import Search from './search';
 
 class Home extends Component {
   render() {
@@ -12,6 +13,7 @@ class Home extends Component {
         <div className="home-header">
           <div className="w">
             <img src="/asset/img/title.jpg" alt="title" />
+            <Search className="home-search"/>
           </div>
         </div>
         <div className="home-banner">
