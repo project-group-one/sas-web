@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HomeNewsContainer from '~/container/homeNews'
 import Banner from './banner';
 import Nav from './nav';
 import News from './news';
@@ -25,7 +26,8 @@ class Home extends Component {
         </div>
         <div className="home-news m-b-50">
           <div className="w">
-            <News />
+            {/* <News /> */}
+            <HomeNewsContainer />
           </div>
         </div>
         <div className="home-link m-b-100">
