@@ -4,7 +4,6 @@ import { Provider } from 'mobx-react';
 import { stores } from './store';
 import Home from './page/home';
 import News from './page/news';
-import NewsDetail from './page/news/Detail';
 
 import MainLayout from './containers/MainLayout';
 
@@ -18,8 +17,7 @@ function RouterConfig() {
                     </Switch>
                     <Switch>
                         <Route exact={true} path='/' component={Home} />
-                        <Route exact={true} path='/news' component={News} />
-                        <Route exact={true} path='/news/:id' component={NewsDetail} />
+                        <Route path='/news' component={News} />
                     </Switch>
                 </Fragment>
             </HashRouter>

@@ -48,8 +48,9 @@ class Comments extends React.Component {
             <Comment
                 style={{
                     width: 500,
+                    margin: '0 auto',
                 }}
-                actions={actions}
+                // actions={actions}
                 author={<a>Han Solo</a>}
                 avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' alt='Han Solo' />}
                 content={

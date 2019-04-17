@@ -18,7 +18,7 @@ const News = () => {
         return (
             <div>
                 <p>{time}</p>
-                <Link to='/news'>more</Link>
+                <Link to='/news/list'>more</Link>
             </div>
         );
     };
@@ -29,7 +29,7 @@ const News = () => {
         <div>
             <div className='home-news-header'>
                 <span>新闻资讯 FOCUS NEWS</span>
-                <Link to='/news'>MORE ></Link>
+                <Link to='/news/list'>MORE ></Link>
             </div>
             <div className='home-news-content'>
                 <div className='home-news-content-left'>
