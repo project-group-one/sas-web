@@ -18,15 +18,20 @@ class ListPagination extends Component {
 
     render() {
         const {
-            newsStore: { data }
+            newsStore: { data, queryParams }
         } = this.props
+        const { current, pageSize } = queryParams
+        const paginationProps = {
+            current,
+            pageSize
+        }
 
         return (
             <Fragment>
                 <Divider style={{ height: 6, margin: '2px 0', background: 'rgb(245,185,0)' }} />
                 <List
                     header={<Title>新闻资讯</Title>}
-                    footer={<Pagination />}
+                    footer={<Pagination {...paginationProps} />}
                     dataSource={data.slice()}
                     renderItem={item => (
                         <List.Item actions={[item.createdAt]}>
