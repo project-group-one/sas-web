@@ -8,8 +8,6 @@ keys.forEach(path => {
   const Store = context(path).default;
   const name = path.match(/\.\/(\w+)\.js/)[1];
 
-  console.log(Store)
-
   Stores[`${name}Store`] = Store;
   stores[`${name}Store`] = new Store();
 });
