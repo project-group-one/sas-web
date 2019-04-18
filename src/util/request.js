@@ -45,6 +45,6 @@ const Request = axios.create({
 
 Request.interceptors.request.use(setTimestamp);
 Request.interceptors.response.use(handleSuccess, handleError);
-Request.interceptors.response.use(res => res);
+Request.interceptors.response.use(res => res.data);
 
 export default Request;
