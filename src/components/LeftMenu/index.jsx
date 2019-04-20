@@ -1,60 +1,78 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+// const MenuItemGroup = Menu.ItemGroup;
+// #e1eafd #49a4f8;
+const Container = styled.main``;
+const WrapperMenu = styled(Menu)`
+    background: #e1eafd;
+    .ant-menu-item {
+        background: #e1eafd;
+        margin: 0;
+        margin-bottom: 0 !important;
+    }
+    .ant-menu-item-selected {
+        background: #49a4f8 !important;
+        a {
+            color: #fff;
+        }
+    }
+    .ant-menu-item-active {
+    }
+    a {
+        color: #000;
+    }
+`;
+
 const LeftMenu = () => {
     const handleClick = (e) => {
         console.log('click ', e);
     };
     return (
-        <Menu style={{ background: '#dfeaff' }} onClick={handleClick} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode='inline'>
-            <SubMenu
-                key='sub1'
-                title={
-                    <span>
-                        <Icon type='mail' />
-                        <span>新闻资讯</span>
-                    </span>
-                }>
-                <MenuItemGroup key='g1' title='Item 1'>
-                    <Menu.Item key='1'>Option 1</Menu.Item>
-                    <Menu.Item key='2'>Option 2</Menu.Item>
-                </MenuItemGroup>
-                <MenuItemGroup key='g2' title='Item 2'>
-                    <Menu.Item key='3'>Option 3</Menu.Item>
-                    <Menu.Item key='4'>Option 4</Menu.Item>
-                </MenuItemGroup>
-            </SubMenu>
-            <SubMenu
-                key='sub2'
-                title={
-                    <span>
-                        <Icon type='appstore' />
-                        <span>Navigation Two</span>
-                    </span>
-                }>
-                <Menu.Item key='5'>Option 5</Menu.Item>
-                <Menu.Item key='6'>Option 6</Menu.Item>
-                <SubMenu key='sub3' title='Submenu'>
-                    <Menu.Item key='7'>Option 7</Menu.Item>
-                    <Menu.Item key='8'>Option 8</Menu.Item>
+        <Container>
+            <WrapperMenu onClick={handleClick} defaultSelectedKeys={['/user/detail']} defaultOpenKeys={['sub1']} mode='inline'>
+                <SubMenu
+                    key='/user'
+                    title={
+                        <span>
+                            <Icon type='user' />
+                            <span>个人中心</span>
+                        </span>
+                    }>
+                    <Menu.Item key='/user/detail'>
+                        <Link to={'/user/detail'}>
+                            <span>基本设置</span>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key='/user/password'>
+                        <Link to={'/user/password'}>
+                            <span>修改密码</span>
+                        </Link>
+                    </Menu.Item>
                 </SubMenu>
-            </SubMenu>
-            <SubMenu
-                key='sub4'
-                title={
-                    <span>
-                        <Icon type='setting' />
-                        <span>Navigation Three</span>
-                    </span>
-                }>
-                <Menu.Item key='9'>Option 9</Menu.Item>
-                <Menu.Item key='10'>Option 10</Menu.Item>
-                <Menu.Item key='11'>Option 11</Menu.Item>
-                <Menu.Item key='12'>Option 12</Menu.Item>
-            </SubMenu>
-        </Menu>
+                {/* <Menu.Item key='/user/detail'>
+                    <Link to={'/user/detail'}>
+                        <Icon type='user' />
+                        <span>个人中心</span>
+                    </Link>
+                </Menu.Item> */}
+                <Menu.Item key='/news/list'>
+                    <Link to={'/news/list'}>
+                        <Icon type='schedule' />
+                        <span>新闻资讯</span>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key='/report/list'>
+                    <Link to={'/report/list'}>
+                        <Icon type='schedule' />
+                        <span>报告列表</span>
+                    </Link>
+                </Menu.Item>
+            </WrapperMenu>
+        </Container>
     );
 };
 
