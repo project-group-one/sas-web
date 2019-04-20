@@ -1,5 +1,5 @@
-import { observable, action } from 'mobx'
-import { query } from '~/service/news'
+import { observable, action, runInAction } from 'mobx'
+import { query, find, postComment } from '~/service/news'
 
 class News {
     @observable data = []
@@ -8,6 +8,8 @@ class News {
         current: 1,
         pageSize: 10
     }
+
+    @observable detail = {}
 
     @action
     async getNewsList(params = {}) {
@@ -20,6 +22,22 @@ class News {
 
         this.data = data
         this.total = total
+    }
+
+    @action
+    async getNews(id) {
+        const data = await find(id)
+
+        this.detail = data
+    }
+
+    @action
+    async post(content, newsId, userId, username) {
+        await postComment({ content, newsId, userId, username })
+
+        runInAction(() => {
+            this.getNews(newsId)
+        })
     }
 }
 

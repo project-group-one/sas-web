@@ -26,7 +26,9 @@ class Comments extends React.Component {
     };
 
     render() {
+        const {data} = this.props
         const { likes, dislikes, action } = this.state;
+        console.log(data)
 
         const actions = [
             <span>
@@ -51,17 +53,14 @@ class Comments extends React.Component {
                     margin: '0 auto',
                 }}
                 // actions={actions}
-                author={<a>Han Solo</a>}
-                avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' alt='Han Solo' />}
+                author={<a>{data.userName}</a>}
+                // avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' alt='Han Solo' />}
                 content={
-                    <p>
-                        We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product
-                        prototypes beautifully and efficiently.
-                    </p>
+                    <p>{data.content}</p>
                 }
                 datetime={
                     <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{moment().fromNow()}</span>
+                        <span>{data.createDate}</span>
                     </Tooltip>
                 }
             />

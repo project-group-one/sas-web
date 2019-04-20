@@ -11,3 +11,11 @@ keys.forEach(path => {
   Stores[`${name}Store`] = Store;
   stores[`${name}Store`] = new Store();
 });
+
+export function getStore() {
+  let args = Array.from(arguments)
+  if (args.length > 1) {
+      return args.map(name => stores[name])
+  }
+  return stores[args[0]]
+}
