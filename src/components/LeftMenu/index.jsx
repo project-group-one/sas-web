@@ -9,6 +9,12 @@ const SubMenu = Menu.SubMenu;
 const Container = styled.main``;
 const WrapperMenu = styled(Menu)`
     background: #e1eafd;
+    .ant-menu-submenu-title {
+        i,
+        span {
+            color: #000;
+        }
+    }
     .ant-menu-item {
         background: #e1eafd;
         margin: 0;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 import Search from '~/components/Search'
 
@@ -22,7 +23,9 @@ class MainLayout extends Component {
         return (
             <div className="home-header">
                 <div className="w">
-                    <img src="/asset/img/title.jpg" alt="title" />
+                    <Link to="/">
+                        <img src="/asset/img/title.jpg" alt="title" />
+                    </Link>
 
                     {user ? (
                         <span>{user.name}</span>

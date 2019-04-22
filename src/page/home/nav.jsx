@@ -36,15 +36,15 @@ const links = [
   {
     name: '食品安全分类查询',
     enName: 'Food safety classification query',
-    url: '',
-    children: [
-      { name: '食品安全分类查询1', url: '/' },
-      { name: '食品安全分类查询2', url: '/' },
-      { name: '食品安全分类查询3', url: '/' },
-      { name: '食品安全分类查询4', url: '/' },
-      { name: '食品安全分类查询5', url: '/' },
-      { name: '食品安全分类查询6', url: '/' }
-    ]
+    url: 'http://chou.foodmate.net/xz/category/index.html',
+    // children: [
+    //   { name: '食品安全分类查询1', url: '/' },
+    //   { name: '食品安全分类查询2', url: '/' },
+    //   { name: '食品安全分类查询3', url: '/' },
+    //   { name: '食品安全分类查询4', url: '/' },
+    //   { name: '食品安全分类查询5', url: '/' },
+    //   { name: '食品安全分类查询6', url: '/' }
+    // ]
   }
 ];
 

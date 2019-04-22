@@ -4,12 +4,12 @@ import { Dropdown, Menu } from 'antd';
 const data = [
   {
     name: '国家级食品安全监督机构',
-    children: [{ name: '国家市场监督管理总局', url: '/' }]
+    children: [{ name: '国家市场监督管理总局', url: 'http://chou.foodmate.net/xz/' }]
   },
   {
     name: '省级食品安全监督机构',
     children: [
-      {name: '浙江省食品药品监督管理局', url: '/'},
+      {name: '浙江省食品药品监督管理局', url: 'http://www.zjfda.gov.cn/'},
       {name: '江苏省食品药品监督管理局', url: '/'},
       {name: '上海市食品药品监督管理局', url: '/'},
       {name: '山东省食品药品监督管理局', url: '/'},
