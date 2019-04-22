@@ -5,7 +5,6 @@ import { Provider } from 'mobx-react';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { stores } from './store';
 import Home from './page/home';
-import News from './page/news';
 import Login from '~/components/Authority/login'
 import NavLayout from './layouts/NavLayout';
 

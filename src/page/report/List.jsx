@@ -61,7 +61,7 @@ class ListPagination extends Component {
                     dataSource={data.slice()}
                     renderItem={(item) => (
                         <List.Item actions={[<a onClick={() => this.setState({ resultModalVisible: true })}>查看检测结果</a>]}>
-                            <List.Item.Meta title={<Link to={`/news/${item.id}`}>{item.title}</Link>} />
+                            <List.Item.Meta title={item.title} />
                         </List.Item>
                     )}
                 />

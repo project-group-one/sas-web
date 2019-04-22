@@ -1,11 +1,11 @@
 import { observable, action, runInAction } from 'mobx'
-import Cookies from 'js-cookie'
 import { message } from 'antd'
-import { login, getUser } from '~/service/authority'
+import { login } from '~/service/authority'
+import { getStore } from '~/store'
 
 class Authority {
     @observable loginVisible = false
-    @observable user = {}
+    @observable user = null
     @observable auth = false
 
     @action
@@ -27,16 +27,16 @@ class Authority {
             this.loginVisible = false
 
             runInAction(() => {
-                this.getUser()
+                const userStore = getStore('userStore')
+                userStore.getUser()
             })
         }
     }
 
     @action
-    async getUser() {
-        const user = await getUser()
-
-        this.user = user
+    async logout() {
+        const userStore = getStore('userStore')
+        userStore.setUser(null)
     }
 }
 

@@ -32,8 +32,8 @@ class News {
     }
 
     @action
-    async post(content, newsId, userId, username) {
-        await postComment({ content, newsId, userId, username })
+    async post(content, newsId, userId, userName) {
+        await postComment({ content, newsId, userId, userName })
 
         runInAction(() => {
             this.getNews(newsId)

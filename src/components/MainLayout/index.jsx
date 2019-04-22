@@ -3,26 +3,31 @@ import { observer, inject } from 'mobx-react'
 import { Button } from 'antd'
 import Search from '~/components/Search'
 
-@inject('authorityStore')
+@inject('authorityStore', 'userStore')
 @observer
 class MainLayout extends Component {
     componentDidMount() {
         // this.props.authorityStore.getUser()
+        let user = window.localStorage.getItem('user')
+
+        user = user ? JSON.parse(user) : null
+
+        this.props.userStore.setUser(user)
     }
 
     render() {
-        const { authorityStore } = this.props
-        const { user } = authorityStore
+        const { authorityStore, userStore } = this.props
+        const { user } = userStore
 
         return (
             <div className="home-header">
                 <div className="w">
                     <img src="/asset/img/title.jpg" alt="title" />
 
-                    {user.id ? (
+                    {user ? (
                         <span>{user.name}</span>
                     ) : (
-                        <Button onClick={() => this.props.authorityStore.showLogin()}>登录</Button>
+                        <Button onClick={() => authorityStore.showLogin()}>登录</Button>
                     )}
 
                     <Search className="home-search" />

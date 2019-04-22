@@ -1,8 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { observer, inject } from 'mobx-react'
-import { List, Divider, Pagination } from 'antd'
+import { List, Divider, Pagination, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const Extra = styled.div``
 
 const Title = styled.h1`
     font-size: 1.5em;
@@ -12,6 +18,10 @@ const Title = styled.h1`
 @inject('newsStore')
 @observer
 class ListPagination extends Component {
+    handleSearch = value => {
+        this.props.newsStore.getNewsList({ keywords: value })
+    }
+
     renderExtra = time => {
         return (
             <div>
@@ -40,7 +50,18 @@ class ListPagination extends Component {
                 <Divider style={{ height: 6, margin: '2px 0', background: 'rgb(245,185,0)' }} />
                 <List
                     className="home-news-list"
-                    header={<Title>新闻资讯</Title>}
+                    header={
+                        <Header>
+                            <Title>新闻资讯</Title>
+                            <Extra>
+                                <Input.Search
+                                    style={{ width: 180 }}
+                                    placeholder="输入关键字"
+                                    onSearch={value => this.handleSearch(value)}
+                                />
+                            </Extra>
+                        </Header>
+                    }
                     footer={<Pagination {...paginationProps} />}
                     dataSource={data.slice()}
                     renderItem={item => (

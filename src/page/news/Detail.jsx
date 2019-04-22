@@ -36,7 +36,7 @@ const defaultCurrent = {
     releaseTime: '2019-08-12'
 }
 
-@inject('newsStore', 'authorityStore')
+@inject('newsStore', 'userStore')
 @observer
 class Detail extends Component {
     state = {
@@ -46,7 +46,11 @@ class Detail extends Component {
     handleClick = () => {
         const { content } = this.state
         const { id } = this.props.newsStore.detail
-        const { id: userId, username } = this.props.authorityStore.user
+        const { user } = this.props.userStore
+
+        if (!user) return
+
+        const { id: userId, username } = user
 
         this.props.newsStore.post(content, id, userId, username)
     }
@@ -57,9 +61,9 @@ class Detail extends Component {
     }
 
     render() {
-        const { newsStore, authorityStore } = this.props
+        const { newsStore, userStore } = this.props
         const { detail: current } = newsStore
-        const { user } = authorityStore
+        const { user } = userStore
 
         return (
             <Container>
@@ -73,7 +77,7 @@ class Detail extends Component {
                     current.comments.map(comment => {
                         return <Comments key={comment.id.toString()} data={comment} />
                     })}
-                {user.id ? (
+                {user ? (
                     <div style={{ width: 500, margin: '0 auto', textAlign: 'right' }}>
                         <Input.TextArea
                             value={this.state.content}

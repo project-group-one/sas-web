@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie'
-
-const checkAuth = () => !!Cookies.get('SESSION')
+const checkAuth = () => window.localStorage.getItem('user')
 
 export { checkAuth }

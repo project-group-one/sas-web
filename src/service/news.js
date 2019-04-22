@@ -13,8 +13,8 @@ export function find(id) {
     return Request.get(`/api/news/${id}`).then(res => res.data)
 }
 
-export function postComment({ content, newsId, userId, username }) {
-    return Request.post('/api/news/comments', { content, newsId, userId, username }).then(res =>
+export function postComment({ content, newsId, userId, userName }) {
+    return Request.post('/api/news/comments', { content, newsId, userId, userName }).then(res =>
         console.log(res)
     )
 }
