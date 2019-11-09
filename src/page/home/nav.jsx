@@ -25,7 +25,7 @@ const links = [
     enName: 'Food safety spot check evaluation',
     url: '',
     children: [
-      { name: '食品安全抽检评价1', url: '/' },
+      { name: '食品安全抽检评价1', url: 'http://120.26.79.122:8087' },
       { name: '食品安全抽检评价2', url: '/' },
       { name: '食品安全抽检评价3', url: '/' },
       { name: '食品安全抽检评价4', url: '/' },
