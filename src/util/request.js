@@ -10,6 +10,7 @@ function handleSuccess(response) {
 }
 
 function handleError(error) {
+  console.log(error)
   const status = error.response.status;
   switch (status) {
     case 400:

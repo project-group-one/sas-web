@@ -9,11 +9,6 @@ const Banner = () => {
   useEffect(() => {
     homeStore.getBanners();
   }, []);
-  console.log(
-    homeStore.banners,
-    homeStore.banners[0] ? homeStore.banners[0].id : "",
-    123123
-  );
   return (
     <Carousel autoplay>
       {homeStore.banners.map(banner => (

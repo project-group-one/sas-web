@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { Dropdown, Menu } from 'antd';
 
 const links = [
@@ -36,7 +37,8 @@ const links = [
   {
     name: '食品安全分类查询',
     enName: 'Food safety classification query',
-    url: 'http://chou.foodmate.net/xz/category/index.html',
+    url: '/inside',
+    // url: 'http://chou.foodmate.net/xz/category/index.html',
     // children: [
     //   { name: '食品安全分类查询1', url: '/' },
     //   { name: '食品安全分类查询2', url: '/' },
@@ -55,9 +57,9 @@ const Nav = () => {
       <Menu>
         {children.map(({ name, url }) => (
           <Menu.Item key={name}>
-            <a href={url} target="_blank" rel="noopener noreferrer">
+            <Link to={url} target="_blank" rel="noopener noreferrer">
               {name}
-            </a>
+            </Link>
           </Menu.Item>
         ))}
       </Menu>
@@ -82,16 +84,16 @@ const Nav = () => {
           );
         }
         return (
-          <a
+          <Link
             key={l.name}
             className="home-nav-item"
-            href={l.url || '#'}
+            to={l.url || '#'}
             target="_blank"
             rel="noopener noreferrer"
           >
             <p>{l.name}</p>
             <p>{l.enName}</p>
-          </a>
+          </Link>
         );
       })}
     </div>
