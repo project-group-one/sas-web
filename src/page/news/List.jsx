@@ -69,9 +69,9 @@ class ListPagination extends Component {
                             <List.Item.Meta
                                 title={<Link to={`/news/${item.id}`}>{item.title}</Link>}
                                 description={
-                                    item.content
+                                    item.content && item.content.length > 100
                                         ? item.content.slice(0, 100) + '...'
-                                        : '党的十九大报告指出，中国特色社会主义进入了新时代，这是全党上下推进各项事业必须准确把握的新的历史方位，也是指...'
+                                        : item.content
                                 }
                             />
                         </List.Item>
