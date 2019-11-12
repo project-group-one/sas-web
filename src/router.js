@@ -18,14 +18,14 @@ function RouterConfig() {
                 <HashRouter>
                     <Fragment>
                         <Switch>
-                            <Route path='/' exact={true} component={MainLayout} />
-                            <Route path='/inside' component={Inside} />
+                            <Route path='/' component={MainLayout} />
                         </Switch>
                         <Switch>
                             <Route exact={true} path='/' component={Home} />
                             <Route path='/news' component={NavLayout} />
                             <Route path='/user' component={NavLayout} />
                             <Route path='/report' component={NavLayout} />
+                            <Route path='/inside' exact={true} component={Inside} />
                         </Switch>
                         <Login />
                     </Fragment>
