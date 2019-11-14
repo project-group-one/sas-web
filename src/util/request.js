@@ -34,6 +34,8 @@ function handleError(error) {
 }
 
 function setTimestamp(config) {
+  const accessToken = window.localStorage.getItem('accessToken')
+  config.headers.Authorization = `Bearer ${accessToken}`
   if (!config.params) {
     config.params = {};
   }

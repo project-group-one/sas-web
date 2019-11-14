@@ -1,19 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Link } from 'react-router-dom'
-import { Button } from 'antd'
+import { Dropdown, Menu, Modal, Divider } from 'antd'
 import Search from '~/components/Search'
 
 @inject('authorityStore', 'userStore')
 @observer
 class MainLayout extends Component {
-    componentDidMount() {
-        // this.props.authorityStore.getUser()
-        let user = window.localStorage.getItem('user')
-
-        user = user ? JSON.parse(user) : null
-
-        this.props.userStore.setUser(user)
+    renderUserMenu() {
+        return (
+            <Menu
+                onClick={({ key }) => {
+                    if (key === 'logout') {
+                        Modal.confirm({
+                            title: '确定要退出该账户吗?',
+                            onOk: () => this.props.authorityStore.logout()
+                        })
+                    }
+                }}
+            >
+                <Menu.Item key="person">
+                    <Link to="/user">个人中心</Link>
+                </Menu.Item>
+                <Menu.Item key="logout">退出</Menu.Item>
+            </Menu>
+        )
     }
 
     render() {
@@ -27,11 +38,23 @@ class MainLayout extends Component {
                         <img src="/asset/img/title.jpg" alt="title" />
                     </Link>
 
-                    {user ? (
-                        <span>{user.name}</span>
-                    ) : (
-                        <Button onClick={() => authorityStore.showLogin()}>登录</Button>
-                    )}
+                    <div className="home-user">
+                        {user ? (
+                            <Dropdown trigger={['hover']} overlay={this.renderUserMenu()}>
+                                <span>{user.name}</span>
+                            </Dropdown>
+                        ) : (
+                            <Fragment>
+                                <a href="#" onClick={() => authorityStore.showLogin()}>
+                                    登录
+                                </a>
+                                <Divider type="vertical" />
+                                <a href="#">注册</a>
+                                {/* <Button onClick={() => authorityStore.showLogin()}>登录</Button>
+                                    <Button onClick={() => {}}>注册</Button> */}
+                            </Fragment>
+                        )}
+                    </div>
 
                     <Search className="home-search" />
                 </div>

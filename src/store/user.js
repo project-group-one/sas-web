@@ -2,7 +2,7 @@ import { observable, action, runInAction } from 'mobx'
 import { find, update, updatePassword } from '~/service/user'
 
 class User {
-    @observable user = null
+    @observable user = JSON.parse(window.localStorage.getItem('user') || null)
 
     @action
     async getUser() {

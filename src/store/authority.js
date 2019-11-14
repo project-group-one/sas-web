@@ -5,8 +5,6 @@ import { getStore } from '~/store'
 
 class Authority {
     @observable loginVisible = false
-    @observable user = null
-    @observable auth = false
 
     @action
     showLogin() {
@@ -20,9 +18,18 @@ class Authority {
 
     @action
     async login(params) {
-        const { accessToken } = await login(params)
+        const { errorMsg, accessToken, userId, expired } = await login(params)
+
+        if (errorMsg) {
+            message.error(errorMsg)
+            return
+        }
 
         if (accessToken) {
+            window.localStorage.setItem('userId', userId)
+            window.localStorage.setItem('accessToken', accessToken)
+            window.localStorage.setItem('expired', expired)
+
             message.success('登录成功', 2)
             this.loginVisible = false
 
