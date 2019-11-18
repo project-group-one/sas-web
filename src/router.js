@@ -9,6 +9,7 @@ import Inside from './page/inside'
 import Login from '~/components/Authority/login'
 import Register from '~/components/Authority/register'
 import NavLayout from './layouts/NavLayout';
+import UserCenterLayout from './layouts/UserCenterLayout'
 
 import MainLayout from './components/MainLayout';
 
@@ -24,7 +25,7 @@ function RouterConfig() {
                         <Switch>
                             <Route exact={true} path='/' component={Home} />
                             <Route path='/news' component={NavLayout} />
-                            <Route path='/user' component={NavLayout} />
+                            <Route path='/user' component={UserCenterLayout} />
                             <Route path='/report' component={NavLayout} />
                             <Route path='/inside' exact={true} component={Inside} />
                         </Switch>
