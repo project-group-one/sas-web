@@ -5,7 +5,7 @@ import { rootPath } from "../constants";
 
 function handleSuccess(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response;
+    return { data: response, error: false };
   }
 }
 
@@ -31,6 +31,7 @@ function handleError(error) {
     default:
       message.error(status);
   }
+  return { data: {}, error: true }
 }
 
 function setTimestamp(config) {

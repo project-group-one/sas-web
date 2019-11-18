@@ -1,10 +1,11 @@
 import { observable, action, runInAction } from 'mobx'
 import { message } from 'antd'
-import { login } from '~/service/authority'
+import { login, register } from '~/service/authority'
 import { getStore } from '~/store'
 
 class Authority {
     @observable loginVisible = false
+    @observable registerVisible = false
 
     @action
     showLogin() {
@@ -14,6 +15,16 @@ class Authority {
     @action
     hideLogin() {
         this.loginVisible = false
+    }
+
+    @action
+    showRegister() {
+        this.registerVisible = true
+    }
+
+    @action
+    hideRegister() {
+        this.registerVisible = false
     }
 
     @action
@@ -44,6 +55,15 @@ class Authority {
     async logout() {
         const userStore = getStore('userStore')
         userStore.setUser(null)
+
+        window.localStorage.removeItem('accessToken')
+        window.localStorage.removeItem('userId')
+        window.localStorage.removeItem('expired')
+    }
+
+    @action
+    async register(params) {
+        const res = await register(params) 
     }
 }
 

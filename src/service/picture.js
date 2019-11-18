@@ -1,10 +1,10 @@
 import Request from "~/util/request";
 
 export function query(params) {
-  return Request.get("/api/pic", { params }).then(({ data, pagination }) => {
+  return Request.get("/api/pic", { params }).then(({error, data: { data, pagination }}) => {
     return {
-      data: Array.isArray(data) ? data : [],
-      pagination: pagination || {}
+      data: !error && Array.isArray(data) ? data : [],
+      pagination: !error ? pagination : {}
     };
   });
 }

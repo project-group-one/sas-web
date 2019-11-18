@@ -49,9 +49,7 @@ class MainLayout extends Component {
                                     登录
                                 </a>
                                 <Divider type="vertical" />
-                                <a href="#">注册</a>
-                                {/* <Button onClick={() => authorityStore.showLogin()}>登录</Button>
-                                    <Button onClick={() => {}}>注册</Button> */}
+                                <a href="#" onClick={() => authorityStore.showRegister()}>注册</a>
                             </Fragment>
                         )}
                     </div>

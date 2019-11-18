@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx'
-import { find, update, updatePassword } from '~/service/user'
+import { find, update, updatePassword, fetchVerifyCode } from '~/service/user'
 
 class User {
     @observable user = JSON.parse(window.localStorage.getItem('user') || null)
@@ -7,6 +7,7 @@ class User {
     @action
     async getUser() {
         const user = await find()
+        console.log(user)
 
         this.user = user
 
@@ -32,6 +33,12 @@ class User {
     @action
     async updatePwd({ oPwd, nPwd }) {
         const res = await updatePassword({ oPwd, nPwd })
+    }
+
+    @action
+    async getVerifyCode(phone) {
+        const error = await fetchVerifyCode(phone)
+        return new Promise(resolve => resolve({ error }))
     }
 }
 

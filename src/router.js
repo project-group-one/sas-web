@@ -7,6 +7,7 @@ import { stores } from './store';
 import Home from './page/home';
 import Inside from './page/inside'
 import Login from '~/components/Authority/login'
+import Register from '~/components/Authority/register'
 import NavLayout from './layouts/NavLayout';
 
 import MainLayout from './components/MainLayout';
@@ -28,6 +29,7 @@ function RouterConfig() {
                             <Route path='/inside' exact={true} component={Inside} />
                         </Switch>
                         <Login />
+                        <Register />
                     </Fragment>
                 </HashRouter>
             </Provider>
