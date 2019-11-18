@@ -5,12 +5,11 @@ import { rootPath } from "../constants";
 
 function handleSuccess(response) {
   if (response.status >= 200 && response.status < 300) {
-    return { data: response, error: false };
+    return { data: response.data, error: false };
   }
 }
 
 function handleError(error) {
-  console.log(error)
   const status = error.response.status;
   switch (status) {
     case 400:
@@ -54,6 +53,6 @@ const Request = axios.create({
 
 Request.interceptors.request.use(setTimestamp);
 Request.interceptors.response.use(handleSuccess, handleError);
-Request.interceptors.response.use(res => res && res.data);
+Request.interceptors.response.use(res => res);
 
 export default Request;

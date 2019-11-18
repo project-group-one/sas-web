@@ -10,7 +10,7 @@ const FoodType = () => {
         foodStore.getFoodTypes()
     }, [])
 
-    return <Tree showLine treeData={foodStore.types} onSelect={key => {}} />
+    return <Tree showLine treeData={foodStore.types} onSelect={key => console.log(key)} />
 }
 
 export default observer(FoodType)

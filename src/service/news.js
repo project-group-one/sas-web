@@ -10,11 +10,9 @@ export function query(params) {
 }
 
 export function find(id) {
-    return Request.get(`/api/news/${id}`).then(({data, error}) => error ? {} : data)
+    return Request.get(`/api/news/${id}`).then(({data, error}) => error ? {} : data.data)
 }
 
 export function postComment({ content, newsId, userId, userName }) {
-    return Request.post('/api/news/comments', { content, newsId, userId, userName }).then(({data, error}) =>
-        console.log(data)
-    )
+    return Request.post('/api/news/comments', { content, newsId, userId, userName }).then(({data, error}) => error)
 }

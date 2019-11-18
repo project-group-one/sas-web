@@ -28,7 +28,6 @@ class Comments extends React.Component {
     render() {
         const {data} = this.props
         const { likes, dislikes, action } = this.state;
-        console.log(data)
 
         const actions = [
             <span>

@@ -33,7 +33,9 @@ class News {
 
     @action
     async post(content, newsId, userId, userName) {
-        await postComment({ content, newsId, userId, userName })
+        const error = await postComment({ content, newsId, userId, userName })
+
+        if (error) return
 
         runInAction(() => {
             this.getNews(newsId)
