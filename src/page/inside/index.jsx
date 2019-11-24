@@ -1,5 +1,8 @@
 import React from 'react'
 import FoodType from './foodType'
+import FoodRegulation from './foodRegulation'
+
+import './index.less'
 
 const Food = () => {
     return (
@@ -11,7 +14,9 @@ const Food = () => {
                 <div className="inside-body-left">
                     <FoodType />
                 </div>
-                <div className="inside-body-right"></div>
+                <div className="inside-body-right">
+                    <FoodRegulation />
+                </div>
             </div>
         </>
     )
