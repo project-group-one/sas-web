@@ -2,7 +2,7 @@ import Request from '~/util/request'
 
 // 获取当前登录用户
 export function find() {
-    return Request.get('/api/user/current').then(({data, error}) => error ? {} : data)
+    return Request.get('/api/user/current').then(({data, error}) => error ? {} : data.data)
 }
 
 export function update(data, id) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Row, Col, Menu, Icon } from "antd";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
@@ -8,10 +8,11 @@ import Password from "../page/user/Password";
 
 const SubMenu = Menu.SubMenu;
 
-const LeftMenu = () => {
+const LeftMenu = props => {
+  const selectedKey = props.location.pathname
   return (
     <div>
-      <Menu defaultOpenKeys={["/user"]} mode="inline">
+      <Menu selectedKeys={[selectedKey]} defaultOpenKeys={['/user']} mode="inline">
         <SubMenu
           key="/user"
           title={
@@ -21,10 +22,10 @@ const LeftMenu = () => {
             </span>
           }
         >
-          <Menu.Item key="basic">
+          <Menu.Item key="/user/detail">
             <Link to="/user/detail">基本信息</Link>
           </Menu.Item>
-          <Menu.Item key="password">
+          <Menu.Item key="/user/password">
             <Link to="/user/password">修改密码</Link>
           </Menu.Item>
         </SubMenu>
@@ -37,17 +38,17 @@ const Container = styled.main`
   width: 1100px;
   margin: 0 auto;
 `;
-const UserCenter = () => {
+const UserCenter = props => {
   return (
     <Container>
       <Row gutter={40}>
         <Col span={6}>
-          <LeftMenu />
+          <LeftMenu location={props.location} />
         </Col>
         <Col span={18}>
           <Switch>
-            <Route exact={true} path="/user/detail" component={UserDetail} />
-            <Route exact={true} path="/user/password" component={Password} />
+            <Route path="/user/detail" component={UserDetail} />
+            <Route path="/user/password" component={Password} />
           </Switch>
         </Col>
       </Row>
@@ -55,4 +56,4 @@ const UserCenter = () => {
   );
 };
 
-export default UserCenter;
+export default withRouter(UserCenter);

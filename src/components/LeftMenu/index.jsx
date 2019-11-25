@@ -1,9 +1,9 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-const SubMenu = Menu.SubMenu;
+// const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 // #e1eafd #49a4f8;
 const Container = styled.main``;
@@ -33,14 +33,12 @@ const WrapperMenu = styled(Menu)`
     }
 `;
 
-const LeftMenu = () => {
-    const handleClick = (e) => {
-        console.log('click ', e);
-    };
+const LeftMenu = props => {
+    const selectedKey = props.location.pathname
     return (
         <Container>
-            <WrapperMenu onClick={handleClick} defaultSelectedKeys={['/user/detail']} defaultOpenKeys={['sub1']} mode='inline'>
-                <SubMenu
+            <WrapperMenu selectedKeys={[selectedKey]} mode='inline'>
+                {/* <SubMenu
                     key='/user'
                     title={
                         <span>
@@ -58,7 +56,7 @@ const LeftMenu = () => {
                             <span>修改密码</span>
                         </Link>
                     </Menu.Item>
-                </SubMenu>
+                </SubMenu> */}
                 {/* <Menu.Item key='/user/detail'>
                     <Link to={'/user/detail'}>
                         <Icon type='user' />
@@ -82,4 +80,4 @@ const LeftMenu = () => {
     );
 };
 
-export default LeftMenu;
+export default withRouter(LeftMenu);

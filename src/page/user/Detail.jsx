@@ -72,7 +72,8 @@ const validatorPhone = (rule, value, callback) => {
 @observer
 class Detail extends Component {
   componentDidMount() {
-    this.setBaseInfo();
+    this.props.userStore.getUser()
+    // this.setBaseInfo();
   }
 
   setBaseInfo = () => {

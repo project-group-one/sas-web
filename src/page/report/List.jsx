@@ -17,7 +17,7 @@ const Title = styled.h1`
     color: #105274;
 `;
 
-@inject('newsStore')
+@inject('reportStore')
 @observer
 class ListPagination extends Component {
     state = {
@@ -25,7 +25,7 @@ class ListPagination extends Component {
         resultModalVisible: false,
     };
     componentDidMount() {
-        this.props.newsStore.getNewsList();
+        this.props.reportStore.getReportList();
     }
 
     handleCancel = () => {
@@ -34,9 +34,14 @@ class ListPagination extends Component {
     handleCheckModalCancel = () => {
         this.setState({ resultModalVisible: false });
     };
+    handleCheckResult = id => {
+        this.props.reportStore.getReport(id).then(() => {
+            this.setState({ resultModalVisible: true })
+        })
+    }
     render() {
         const {
-            newsStore: { data, queryParams },
+            reportStore: { data, queryParams },
         } = this.props;
         const { visible, resultModalVisible } = this.state;
         const { current, pageSize } = queryParams;
@@ -60,8 +65,8 @@ class ListPagination extends Component {
                     footer={<Pagination {...paginationProps} />}
                     dataSource={data.slice()}
                     renderItem={(item) => (
-                        <List.Item actions={[<a onClick={() => this.setState({ resultModalVisible: true })}>查看检测结果</a>]}>
-                            <List.Item.Meta title={item.title} />
+                        <List.Item actions={[<a onClick={() => this.handleCheckResult(item.id)}>查看检测结果</a>]}>
+                            <List.Item.Meta title={item.name} />
                         </List.Item>
                     )}
                 />
