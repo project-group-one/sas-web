@@ -4,7 +4,7 @@ import { fetchFoodTypes, fetchFoodRegulation } from '~/service/food'
 class Food {
     @observable types = [];
     @observable selectedKey = undefined
-    @observable regulation = {};
+    @observable regulation = null;
 
     @action
     async getFoodTypes() {
@@ -24,7 +24,7 @@ class Food {
 
         const data = await fetchFoodRegulation(key)
 
-        this.regulation = data || {}
+        this.regulation = data
     }
 }
 

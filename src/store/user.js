@@ -4,10 +4,11 @@ import { find, update, updatePassword, fetchVerifyCode } from '~/service/user'
 class User {
     @observable user = JSON.parse(window.localStorage.getItem('user') || null)
 
+    @observable organization = {}
+
     @action
     async getUser() {
         const user = await find()
-        console.log(user)
 
         this.user = user
 
