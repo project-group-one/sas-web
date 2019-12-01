@@ -30,12 +30,14 @@ function handleError(error) {
     default:
       message.error(status);
   }
-  return { data: {}, error: true }
+  return { data: {}, error: true };
 }
 
 function setTimestamp(config) {
-  const accessToken = window.localStorage.getItem('accessToken')
-  config.headers.Authorization = `Bearer ${accessToken}`
+  const accessToken = window.localStorage.getItem("accessToken");
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
   if (!config.params) {
     config.params = {};
   }

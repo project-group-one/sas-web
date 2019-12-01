@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { toJS } from "mobx";
 import { Carousel } from "antd";
 import { observer } from "mobx-react";
 import useStores from "~/hooks/useStores";
@@ -11,8 +12,8 @@ const Banner = () => {
   }, []);
   return (
     <Carousel autoplay>
-      {homeStore.banners.map(banner => (
-        <div>
+      {homeStore.banners.map((banner, index) => (
+        <div key={index}>
           <div
             className="carousel-pic"
             style={{ backgroundImage: `url(${filePath}${banner.imgUrl})` }}

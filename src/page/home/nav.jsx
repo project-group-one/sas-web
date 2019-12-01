@@ -1,43 +1,43 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
-import { Dropdown, Menu } from 'antd';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Dropdown, Menu } from "antd";
 
 const links = [
   {
-    name: '食品安全抽检报告',
-    enName: 'Food safety spot check report',
-    url: 'http://chou.foodmate.net/xz/'
+    name: "食品安全抽检报告",
+    enName: "Food safety spot check report",
+    url: "http://chou.foodmate.net/xz/"
   },
   {
-    name: '食品安全抽检分析',
-    enName: 'Food safety spot check analysis',
-    url: '',
+    name: "食品安全抽检分析",
+    enName: "Food safety spot check analysis",
+    url: "",
     children: [
-      { name: '食品安全抽检分析1', url: 'http://120.26.79.122:8087/login' },
-      { name: '食品安全抽检分析2', url: '/' },
-      { name: '食品安全抽检分析3', url: '/' },
-      { name: '食品安全抽检分析4', url: '/' },
-      { name: '食品安全抽检分析5', url: '/' },
-      { name: '食品安全抽检分析6', url: '/' }
+      { name: "食品安全抽检分析1", url: "http://120.26.79.122:8087/login" },
+      { name: "食品安全抽检分析2", url: "/" },
+      { name: "食品安全抽检分析3", url: "/" },
+      { name: "食品安全抽检分析4", url: "/" },
+      { name: "食品安全抽检分析5", url: "/" },
+      { name: "食品安全抽检分析6", url: "/" }
     ]
   },
   {
-    name: '食品安全抽检评价',
-    enName: 'Food safety spot check evaluation',
-    url: '',
+    name: "食品安全抽检评价",
+    enName: "Food safety spot check evaluation",
+    url: "",
     children: [
-      { name: '食品安全抽检评价1', url: 'http://120.26.79.122:8087' },
-      { name: '食品安全抽检评价2', url: '/' },
-      { name: '食品安全抽检评价3', url: '/' },
-      { name: '食品安全抽检评价4', url: '/' },
-      { name: '食品安全抽检评价5', url: '/' },
-      { name: '食品安全抽检评价6', url: '/' }
+      { name: "食品安全抽检评价", url: "http://120.26.79.122:8087" },
+      // { name: "食品安全抽检评价2", url: "/" },
+      // { name: "食品安全抽检评价3", url: "/" },
+      // { name: "食品安全抽检评价4", url: "/" },
+      // { name: "食品安全抽检评价5", url: "/" },
+      // { name: "食品安全抽检评价6", url: "/" }
     ]
   },
   {
-    name: '食品安全分类查询',
-    enName: 'Food safety classification query',
-    url: '/inside',
+    name: "食品安全分类查询",
+    enName: "Food safety classification query",
+    url: "/inside"
     // url: 'http://chou.foodmate.net/xz/category/index.html',
     // children: [
     //   { name: '食品安全分类查询1', url: '/' },
@@ -57,9 +57,15 @@ const Nav = () => {
       <Menu>
         {children.map(({ name, url }) => (
           <Menu.Item key={name}>
-            <Link to={url} target="_blank" rel="noopener noreferrer">
-              {name}
-            </Link>
+            {url.startsWith("http") ? (
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                {name}
+              </a>
+            ) : (
+              <Link to={url} target="_blank" rel="noopener noreferrer">
+                {name}
+              </Link>
+            )}
           </Menu.Item>
         ))}
       </Menu>
@@ -72,7 +78,7 @@ const Nav = () => {
           return (
             <Dropdown
               key={l.name}
-              trigger={['hover']}
+              trigger={["hover"]}
               overlayClassName="home-nav-item-dropdown"
               overlay={renderMenu(l.children)}
             >
@@ -87,7 +93,7 @@ const Nav = () => {
           <Link
             key={l.name}
             className="home-nav-item"
-            to={l.url || '#'}
+            to={l.url || "#"}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -4,13 +4,14 @@ import { observer } from 'mobx-react'
 import useStores from '~/hooks/useStores'
 import { List } from 'antd'
 import NewsBanner from './newsBanner'
+import moment from 'moment'
 
 const News = () => {
     const { newsStore } = useStores()
     const renderExtra = time => {
         return (
             <div>
-                <p>{time}</p>
+                <p>{moment(time).format('YYYY-MM-DD')}</p>
                 <Link to="/news/list">more</Link>
             </div>
         )
