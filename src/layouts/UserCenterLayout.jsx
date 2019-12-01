@@ -2,17 +2,22 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Row, Col, Menu, Icon } from "antd";
 import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import UserDetail from "../page/user/Detail";
 import Password from "../page/user/Password";
+import Organization from "../page/user/Organization";
 
 const SubMenu = Menu.SubMenu;
 
 const LeftMenu = props => {
-  const selectedKey = props.location.pathname
+  const selectedKey = props.location.pathname;
   return (
     <div>
-      <Menu selectedKeys={[selectedKey]} defaultOpenKeys={['/user']} mode="inline">
+      <Menu
+        selectedKeys={[selectedKey]}
+        defaultOpenKeys={["/user"]}
+        mode="inline"
+      >
         <SubMenu
           key="/user"
           title={
@@ -27,6 +32,9 @@ const LeftMenu = props => {
           </Menu.Item>
           <Menu.Item key="/user/password">
             <Link to="/user/password">修改密码</Link>
+          </Menu.Item>
+          <Menu.Item key="/user/organization">
+            <Link to="/user/organization">组织</Link>
           </Menu.Item>
         </SubMenu>
       </Menu>
@@ -47,8 +55,10 @@ const UserCenter = props => {
         </Col>
         <Col span={18}>
           <Switch>
+            <Redirect exact from="/user" to="/user/detail" />
             <Route path="/user/detail" component={UserDetail} />
             <Route path="/user/password" component={Password} />
+            <Route path="/user/organization" component={Organization} />
           </Switch>
         </Col>
       </Row>

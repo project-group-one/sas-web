@@ -5,5 +5,5 @@ export function fetchFoodTypes() {
 }
 
 export function fetchFoodRegulation(id) {
-    return Request.get('/api/food/regulation/' + id).then(({data, error}) => error ? {} : data.data)
+    return Request.get('/api/food/regulation/' + id).then(({data, error}) => error ? null : data.data)
 }

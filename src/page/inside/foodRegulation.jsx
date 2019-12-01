@@ -1,10 +1,15 @@
 import React from "react";
 import { observer } from "mobx-react";
 import useStores from "~/hooks/useStores";
+import { Empty } from "antd";
 
 const FoodRegulation = () => {
   const { foodStore } = useStores();
   const { regulation } = foodStore;
+
+  if (!regulation) {
+    return <Empty style={{ marginTop: 100 }} />;
+  }
 
   return (
     <div className="food-regulation">
