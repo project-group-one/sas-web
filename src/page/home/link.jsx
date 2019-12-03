@@ -9,19 +9,19 @@ const data = [
   {
     name: '省级食品安全监督机构',
     children: [
-      {name: '浙江省食品药品监督管理局', url: 'http://www.zjfda.gov.cn/'},
-      {name: '江苏省食品药品监督管理局', url: '/'},
-      {name: '上海市食品药品监督管理局', url: '/'},
-      {name: '山东省食品药品监督管理局', url: '/'},
-      {name: '北京市食品药品监督管理局', url: '/'}
+      {name: '浙江省食品药品监督管理局', url: 'http://mpa.zj.gov.cn'},
+      {name: '江苏省食品药品监督管理局', url: 'http://da.jiangsu.gov.cn/'},
+      {name: '上海市食品药品监督管理局', url: 'http://www.shfda.gov.cn/'},
+      {name: '山东省食品药品监督管理局', url: 'http://mpa.shandong.gov.cn/'},
+      {name: '北京市食品药品监督管理局', url: 'scjgj.beijing.gov.cn'}
     ]
   },
   {
     name: '市级食品安全监督机构',
     children: [
-      {name: '杭州市', url: '/'},
-      {name: '宁波市', url: '/'},
-      {name: '湖州市', url: '/'},
+      {name: '杭州市', url: 'http://scjg.hangzhou.gov.cn/'},
+      {name: '宁波市', url: 'http://scjgj.ningbo.gov.cn/'},
+      {name: '湖州市', url: 'http://www.hufs.gov.cn/'},
     ]
   },
   {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Input, Button } from "antd";
+import { Input, Button, message } from "antd";
 
 @inject("userStore")
 @observer
@@ -34,6 +34,10 @@ class VerifyCode extends Component {
 
   handleClick() {
     const { phone, userStore } = this.props;
+    if (!phone) {
+      return message.warn('请输入手机号码')
+    }
+
     this.setState({ fetching: true });
     this.handleCountDown();
     userStore.getVerifyCode(phone);
