@@ -43,10 +43,14 @@ class VerifyCode extends Component {
     const { fetching, countdown } = this.state;
 
     if (fetching) {
-      return <span>{countdown}</span>;
+      return <div style={{ width: 70 }}>{countdown}</div>;
     }
 
-    return <Button onClick={() => this.handleClick()}>获取验证码</Button>;
+    return (
+      <div style={{ cursor: "pointer" }} onClick={() => this.handleClick()}>
+        获取验证码
+      </div>
+    );
   }
 
   render() {

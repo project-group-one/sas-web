@@ -16,7 +16,7 @@ const Banner = () => {
         <div key={index}>
           <div
             className="carousel-pic"
-            style={{ backgroundImage: `url(${filePath}${banner.imgUrl})` }}
+            style={{ backgroundImage: `url(${filePath}/${banner.imgUrl})` }}
           />
         </div>
       ))}

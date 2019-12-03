@@ -1,6 +1,6 @@
 import { message, Icon, Upload } from "antd";
 import React, { useState, useEffect } from "react";
-import { filePath } from "~/constants";
+import { rootPath } from "~/constants";
 import styles from "./index.less";
 
 const imageTypes = ["jpeg", "jpg", "png", "gif"];
@@ -50,7 +50,7 @@ const UploadImage = ({ value, onChange }) => {
   return (
     <Upload
       name="file"
-      action={`${filePath}/api/files`}
+      action={`${rootPath}/api/files`}
       listType="picture-card"
       className={styles["avatar-uploader"]}
       showUploadList={false}
