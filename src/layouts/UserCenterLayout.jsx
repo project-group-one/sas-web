@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import UserDetail from "../page/user/Detail";
 import Password from "../page/user/Password";
 import Organization from "../page/user/Organization";
+import Verification from "../page/user/Verification";
 
 const SubMenu = Menu.SubMenu;
 
@@ -29,6 +30,9 @@ const LeftMenu = props => {
         >
           <Menu.Item key="/user/detail">
             <Link to="/user/detail">基本信息</Link>
+          </Menu.Item>
+          <Menu.Item key="/user/verification">
+            <Link to="/user/verification">身份验证</Link>
           </Menu.Item>
           <Menu.Item key="/user/password">
             <Link to="/user/password">修改密码</Link>
@@ -57,6 +61,7 @@ const UserCenter = props => {
           <Switch>
             <Redirect exact from="/user" to="/user/detail" />
             <Route path="/user/detail" component={UserDetail} />
+            <Route path="/user/verification" component={Verification} />
             <Route path="/user/password" component={Password} />
             <Route path="/user/organization" component={Organization} />
           </Switch>

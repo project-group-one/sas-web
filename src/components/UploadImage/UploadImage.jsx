@@ -24,7 +24,7 @@ function beforeUpload(file) {
   return isAllowed && isLt2M;
 }
 
-const UploadImage = ({ value, onChange }) => {
+const UploadImage = ({ value, onChange, className, style, ...rest }) => {
   const [imgUrl, setImgUrl] = useState(value);
   const [uploading, setUploading] = useState(false);
 
@@ -49,10 +49,12 @@ const UploadImage = ({ value, onChange }) => {
 
   return (
     <Upload
+      {...rest}
+      style={style}
       name="file"
       action={`${rootPath}/api/files`}
       listType="picture-card"
-      className={styles["avatar-uploader"]}
+      className={`${styles["avatar-uploader"]} ${className}`}
       showUploadList={false}
       onChange={handleChange}
       beforeUpload={beforeUpload}
@@ -61,11 +63,20 @@ const UploadImage = ({ value, onChange }) => {
       }}
     >
       {imgUrl ? (
-        <img src={imgUrl} alt="avatar" />
+        <img src={imgUrl} alt="avatar" style={style} />
       ) : (
-        <div>
-          <Icon type={uploading ? "loading" : "plus"} />
-          <div>点击上传</div>
+        <div
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <div>
+            <Icon type={uploading ? "loading" : "plus"} />
+            <div>点击上传</div>
+          </div>
         </div>
       )}
     </Upload>
