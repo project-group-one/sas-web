@@ -1,10 +1,13 @@
-import { observable, action } from "mobx";
+import { observable, action, runInAction } from "mobx";
+import { message } from "antd";
 import {
   find,
   update,
   updatePassword,
   fetchVerifyCode,
-  verify
+  verify,
+  fetchOrganization,
+  applyOrganization
 } from "~/service/user";
 
 class User {
@@ -39,7 +42,13 @@ class User {
 
   @action
   async updatePwd({ oPwd, nPwd }) {
-    const res = await updatePassword({ oPwd, nPwd });
+    const {success, msg} = await updatePassword({ oPwd, nPwd });
+
+    if (!success) {
+      message.error(msg)
+    } else {
+      message.success('修改成功')
+    }
   }
 
   @action
@@ -51,6 +60,25 @@ class User {
   async getVerifyCode(phone) {
     const error = await fetchVerifyCode(phone);
     return new Promise(resolve => resolve({ error }));
+  }
+
+  @action
+  async getOrganization() {
+    const res = await fetchOrganization(this.user.id);
+
+    this.organization = res;
+  }
+
+  @action
+  async submitOrganizationInfo(params) {
+    const error = await applyOrganization(params);
+
+    if (!error) {
+      runInAction(() => {
+        message.success("申请成功");
+        this.getOrganization();
+      });
+    }
   }
 }
 

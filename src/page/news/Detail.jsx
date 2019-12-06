@@ -11,6 +11,7 @@ const Title = styled.h1`
 `;
 const Content = styled.pre`
   min-height: 300px;
+  border-bottom: 1px solid #eee;
 `;
 const Container = styled.main``;
 const Meta = styled.main`
@@ -21,6 +22,10 @@ const Time = styled.span`
   margin-right: 10px;
 `;
 const Author = styled.span``;
+const CommentTitle = styled.h3`
+  width: 500px;
+  margin: 0 auto;
+`
 
 const defaultCurrent = {
   id: 1,
@@ -76,9 +81,10 @@ class Detail extends Component {
           <Author>{current.author}</Author>
         </Meta>
         <Content dangerouslySetInnerHTML={{ __html: current.content }} />
+        <CommentTitle>评论</CommentTitle>
         {current.comments &&
           current.comments.map(comment => {
-            return <Comments key={comment.id.toString()} data={comment} />;
+            return <Comments key={comment.id + ''} data={comment} />;
           })}
         {user ? (
           <div style={{ width: 500, margin: "0 auto", textAlign: "right" }}>

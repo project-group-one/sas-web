@@ -63,8 +63,21 @@ class Authority {
 
   @action
   async register(params) {
-    const res = await register(params);
-    this.registerVisible = false;
+    const { success, msg, data } = await register(params);
+
+    if (!success) {
+      message.error(msg);
+      return;
+    }
+
+    runInAction(() => {
+      message.success('注册成功')
+      this.registerVisible = false;
+      window.localStorage.setItem("accessToken", data.accessToken);
+      window.localStorage.setItem("expired", data.expired);
+      const userStore = getStore("userStore");
+      userStore.getUser();
+    });
   }
 }
 
