@@ -45,6 +45,7 @@ class User {
   @action
   async verify({ frontPath, backPath }) {
     const res = await verify({ frontPath, backPath });
+    await this.getUser();
   }
 
   @action

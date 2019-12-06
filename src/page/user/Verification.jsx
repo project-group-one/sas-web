@@ -31,7 +31,8 @@ class Detail extends Component {
 
   render() {
     const {
-      form: { getFieldDecorator }
+      form: { getFieldDecorator },
+      userStore
     } = this.props;
     return (
       <Card size="small" title="身份验证">
@@ -40,53 +41,57 @@ class Detail extends Component {
           ref={this.getViewDom}
         >
           <Left>
-            <Form
-              layout="vertical"
-              onSubmit={this.handleSubmit}
-              hideRequiredMark
-            >
-              <FormItem label={"身份证正面"}>
-                {getFieldDecorator("frontPath", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "请上传身份证正面"
-                    }
-                  ]
-                })(
-                  <UploadImage
-                    style={{
-                      display: "block",
-                      height: 200,
-                      width: 500,
-                      padding: 0
-                    }}
-                  />
-                )}
-              </FormItem>
-              <FormItem label={"身份证反面"}>
-                {getFieldDecorator("backPath", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "请上传身份证反面"
-                    }
-                  ]
-                })(
-                  <UploadImage
-                    style={{
-                      display: "block",
-                      height: 200,
-                      width: 500,
-                      padding: 0
-                    }}
-                  />
-                )}
-              </FormItem>
-              <Button htmlType="submit" type="primary">
-                保存
-              </Button>
-            </Form>
+            {userStore.user.verified ? (
+              <div style={{ color: "green" }}>身份已验证通过</div>
+            ) : (
+              <Form
+                layout="vertical"
+                onSubmit={this.handleSubmit}
+                hideRequiredMark
+              >
+                <FormItem label={"身份证正面"}>
+                  {getFieldDecorator("frontPath", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "请上传身份证正面"
+                      }
+                    ]
+                  })(
+                    <UploadImage
+                      style={{
+                        display: "block",
+                        height: 200,
+                        width: 500,
+                        padding: 0
+                      }}
+                    />
+                  )}
+                </FormItem>
+                <FormItem label={"身份证反面"}>
+                  {getFieldDecorator("backPath", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "请上传身份证反面"
+                      }
+                    ]
+                  })(
+                    <UploadImage
+                      style={{
+                        display: "block",
+                        height: 200,
+                        width: 500,
+                        padding: 0
+                      }}
+                    />
+                  )}
+                </FormItem>
+                <Button htmlType="submit" type="primary">
+                  保存
+                </Button>
+              </Form>
+            )}
           </Left>
         </div>
       </Card>
