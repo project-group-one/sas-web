@@ -40,7 +40,7 @@ const News = () => {
                         itemLayout="vertical"
                         dataSource={newsStore.data}
                         renderItem={item => (
-                            <List.Item key={item.id} extra={renderExtra(item.releaseTime)}>
+                            <List.Item extra={renderExtra(item.releaseTime)}>
                                 <List.Item.Meta
                                     title={<Link to={`/news/${item.id}`}>{item.title}</Link>}
                                 />

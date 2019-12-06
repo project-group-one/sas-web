@@ -15,6 +15,9 @@ const Title = styled.h1`
     color: #105274;
 `
 
+const parseTime = (time = []) => time.slice(0, 3).join('-') + ' ' + time.slice(3).join(':')
+
+
 @inject('newsStore')
 @observer
 class ListPagination extends Component {
@@ -65,7 +68,7 @@ class ListPagination extends Component {
                     footer={<Pagination {...paginationProps} />}
                     dataSource={data.slice()}
                     renderItem={item => (
-                        <List.Item actions={[item.releaseTime]}>
+                        <List.Item actions={[parseTime(item.releaseTime)]}>
                             <List.Item.Meta
                                 title={<Link to={`/news/${item.id}`}>{item.title}</Link>}
                                 description={

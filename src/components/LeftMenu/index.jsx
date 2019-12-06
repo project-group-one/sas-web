@@ -34,7 +34,7 @@ const WrapperMenu = styled(Menu)`
 `;
 
 const LeftMenu = props => {
-    const selectedKey = props.location.pathname
+    const selectedKey = props.location.pathname.indexOf('news') > -1 ? 'news' : 'report'
     return (
         <Container>
             <WrapperMenu selectedKeys={[selectedKey]} mode='inline'>
@@ -63,13 +63,13 @@ const LeftMenu = props => {
                         <span>个人中心</span>
                     </Link>
                 </Menu.Item> */}
-                <Menu.Item key='/news/list'>
+                <Menu.Item key='news'>
                     <Link to={'/news/list'}>
                         <Icon type='schedule' />
                         <span>新闻资讯</span>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key='/report/list'>
+                <Menu.Item key='report'>
                     <Link to={'/report/list'}>
                         <Icon type='schedule' />
                         <span>报告列表</span>

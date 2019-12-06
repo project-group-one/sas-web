@@ -1,4 +1,5 @@
 import React from 'react';
+import {toJS} from 'mobx'
 import { Comment, Icon, Tooltip, Avatar } from 'antd';
 import moment from 'moment';
 
@@ -44,6 +45,8 @@ class Comments extends React.Component {
             </span>,
             <span>Reply to</span>,
         ];
+        
+        const time = data.createdDate.slice(0, 3).join('-') + ' ' + data.createdDate.slice(3).join(':')
 
         return (
             <Comment
@@ -59,7 +62,7 @@ class Comments extends React.Component {
                 }
                 datetime={
                     <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{data.createDate}</span>
+                        <span>{time}</span>
                     </Tooltip>
                 }
             />

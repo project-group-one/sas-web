@@ -124,7 +124,7 @@ class Detail extends Component {
                 <div style={{ display: 'flex', padding: '0 50px' }} ref={this.getViewDom}>
                     <Left>
                         <Form layout="vertical" onSubmit={this.handleSubmit} hideRequiredMark>
-                            <FormItem label={'密码'}>
+                            <FormItem label={'原密码'}>
                                 {getFieldDecorator('oPwd', {
                                     rules: [
                                         {
