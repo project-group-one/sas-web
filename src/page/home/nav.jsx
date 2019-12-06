@@ -13,12 +13,12 @@ const links = [
     enName: "Food safety spot check analysis",
     url: "",
     children: [
-      { name: "食品安全抽检分析1", url: "http://120.26.79.122:8087/login" },
-      { name: "食品安全抽检分析2", url: "/" },
-      { name: "食品安全抽检分析3", url: "/" },
-      { name: "食品安全抽检分析4", url: "/" },
-      { name: "食品安全抽检分析5", url: "/" },
-      { name: "食品安全抽检分析6", url: "/" }
+      { name: "食品安全抽检分析", url: "http://120.26.79.122:8087/login" },
+      // { name: "食品安全抽检分析2", url: "/" },
+      // { name: "食品安全抽检分析3", url: "/" },
+      // { name: "食品安全抽检分析4", url: "/" },
+      // { name: "食品安全抽检分析5", url: "/" },
+      // { name: "食品安全抽检分析6", url: "/" }
     ]
   },
   {
