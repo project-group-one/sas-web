@@ -1,8 +1,11 @@
 import React from 'react';
-import { Modal, Form, Spin } from 'antd';
+import {inject, observer} from 'mobx-react'
+import { Modal, Form, Spin, message } from 'antd';
 import DataContext from './common/DataContext';
 import ModalContent from './ModalContent';
 
+@inject('reportStore')
+@observer
 class ExampleModal extends React.PureComponent {
     handleCancel = () => {
         if (this.props.onCancel) this.props.onCancel();
@@ -14,6 +17,15 @@ class ExampleModal extends React.PureComponent {
             if (errors) return;
             if (isEdit) {
             } else {
+                let path = '';
+                if (Array.isArray(value.path) && value.path.length > 0) {
+                    if (value.path[0].response) {
+                        path = value.path[0].response.data;
+                    }
+                }
+                if (!path) return message.warn('请先等待上传完成！', 2);
+                value.path = path
+                this.props.reportStore.createReport(value)
             }
             this.handleCancel();
         });

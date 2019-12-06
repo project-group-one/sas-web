@@ -69,12 +69,12 @@ const LeftMenu = props => {
                         <span>新闻资讯</span>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key='report'>
+                {/* <Menu.Item key='report'>
                     <Link to={'/report/list'}>
                         <Icon type='schedule' />
                         <span>报告列表</span>
                     </Link>
-                </Menu.Item>
+                </Menu.Item> */}
             </WrapperMenu>
         </Container>
     );

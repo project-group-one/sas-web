@@ -7,6 +7,7 @@ import UserDetail from "../page/user/Detail";
 import Password from "../page/user/Password";
 import Organization from "../page/user/Organization";
 import Verification from "../page/user/Verification";
+import ReportList from '../page/report/List';
 
 const SubMenu = Menu.SubMenu;
 
@@ -40,6 +41,9 @@ const LeftMenu = props => {
           <Menu.Item key="/user/organization">
             <Link to="/user/organization">组织</Link>
           </Menu.Item>
+          <Menu.Item key="/user/report">
+            <Link to="/user/report">检测报告</Link>
+          </Menu.Item>
         </SubMenu>
       </Menu>
     </div>
@@ -64,6 +68,7 @@ const UserCenter = props => {
             <Route path="/user/verification" component={Verification} />
             <Route path="/user/password" component={Password} />
             <Route path="/user/organization" component={Organization} />
+            <Route path="/user/report" component={ReportList} />
           </Switch>
         </Col>
       </Row>

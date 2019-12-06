@@ -5,6 +5,10 @@ import { Modal, Form, Input, Button, Icon } from 'antd'
 @inject('authorityStore')
 @observer
 class Login extends Component {
+    state = {
+        loading: false
+    }
+
     handleSubmit = e => {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
@@ -17,7 +21,7 @@ class Login extends Component {
     render() {
         const { form, authorityStore } = this.props
         const { getFieldDecorator } = form
-        const { loginVisible } = authorityStore
+        const { loginVisible, loading } = authorityStore
 
         return (
             <Modal
@@ -51,7 +55,7 @@ class Login extends Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+                        <Button type="primary" htmlType="submit" style={{ width: '100%' }} loading={loading}>
                             登录
                         </Button>
                     </Form.Item>

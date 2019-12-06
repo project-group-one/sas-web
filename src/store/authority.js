@@ -6,6 +6,7 @@ import { getStore } from "~/store";
 class Authority {
   @observable loginVisible = false;
   @observable registerVisible = false;
+  @observable loading = false;
 
   @action
   showLogin() {
@@ -29,7 +30,13 @@ class Authority {
 
   @action
   async login(params) {
+    this.loading = true;
+
     const { errorMsg, accessToken, userId, expired } = await login(params);
+
+    runInAction(() => {
+      this.loading = false;
+    });
 
     if (errorMsg) {
       message.error(errorMsg);
@@ -63,7 +70,13 @@ class Authority {
 
   @action
   async register(params) {
+    this.loading = true;
+
     const { success, msg, data } = await register(params);
+
+    runInAction(() => {
+      this.loading = false;
+    });
 
     if (!success) {
       message.error(msg);
@@ -71,7 +84,7 @@ class Authority {
     }
 
     runInAction(() => {
-      message.success('注册成功')
+      message.success("注册成功");
       this.registerVisible = false;
       window.localStorage.setItem("accessToken", data.accessToken);
       window.localStorage.setItem("expired", data.expired);
