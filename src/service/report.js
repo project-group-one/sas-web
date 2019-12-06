@@ -11,3 +11,7 @@ export function find(id) {
     error ? {} : data.data
   );
 }
+
+export function create(params) {
+  return Request.post("/api/reports", params).then(({ error }) => error);
+}

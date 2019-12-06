@@ -47,7 +47,7 @@ class VerifyCode extends Component {
     const { fetching, countdown } = this.state;
 
     if (fetching) {
-      return <div style={{ width: 70 }}>{countdown}</div>;
+      return <div style={{ width: 70 }}>{countdown}秒后重试</div>;
     }
 
     return (

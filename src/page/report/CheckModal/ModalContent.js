@@ -45,9 +45,9 @@ class ModalContent extends React.PureComponent {
             <Form.Item label="创建时间">
               {moment(detail.createdData).format("YYYY-MM-DD HH:mm")}
             </Form.Item>
-            <Form.Item label="图片">
+            {/* <Form.Item label="图片">
               <img src={`${detail.path}`} alt="图片" />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item label="评价">{detail.evaluation || "暂无"}</Form.Item>
           </Form>
         </Content>

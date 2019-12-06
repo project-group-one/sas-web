@@ -1,5 +1,6 @@
 import { observable, action, runInAction } from 'mobx'
-import { query, find } from '~/service/report'
+import {message} from 'antd'
+import { query, find, create } from '~/service/report'
 
 class Report {
     @observable data = []
@@ -29,6 +30,22 @@ class Report {
         const data = await find(id)
 
         this.detail = data
+    }
+
+    @action
+    async createReport(params) {
+        const error = await create(params)
+
+        if (error) {
+            message.error('上传失败')
+            return
+        }
+
+        runInAction(() => {
+            message.success('上传成功')
+            this.getReportList()
+        })
+
     }
 
     // @action

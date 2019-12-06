@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { Card, Form, Input, Button } from "antd";
+import { Card, Form, Input, Button, message } from "antd";
 import UploadImage from "~/components/UploadImage";
+
+const statusName = status => {
+  switch (status) {
+    case "WAIT_AUDIT":
+      return "待审核";
+    case "AUDITING":
+      return "审核中...";
+    default:
+      return "";
+  }
+};
 
 @inject("userStore")
 @Form.create()
@@ -20,13 +31,30 @@ class Organization extends Component {
       }
     });
   };
+  renderInfo = organization => {
+    const { status, name } = organization;
+
+    if (status === "WAIT_AUDIT" || status === "AUDITING") {
+      return statusName(status);
+    }
+
+    if (status === "FAIL") {
+      message.error("审核失败");
+    }
+
+    return (
+      <Form>
+        <Form.Item label="组织名称">{name}</Form.Item>
+      </Form>
+    );
+  };
   render() {
     const { organization, user } = this.props.userStore;
     const { getFieldDecorator } = this.props.form;
     return (
       <Card size="small" title={organization.id ? "组织信息" : "申请组织"}>
         {organization.id ? (
-          "组织信息"
+          this.renderInfo(organization)
         ) : (
           <Form onSubmit={this.handleSubmit}>
             <Form.Item label="组织名称" required>

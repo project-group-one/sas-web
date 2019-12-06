@@ -202,9 +202,9 @@ class Detail extends Component {
               </Button>
             </Form>
           </Left>
-          <Right>
+          {/* <Right>
             <AvatarView avatar={this.getAvatarURL()} />
-          </Right>
+          </Right> */}
         </div>
       </Card>
     );

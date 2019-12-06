@@ -5,9 +5,9 @@ import { Switch, Route } from 'react-router-dom';
 import LeftMenu from '../components/LeftMenu';
 import NewsList from '../page/news/List';
 import NewsDetail from '../page/news/Detail';
-import ReportList from '../page/report/List';
-import UserDetail from '../page/user/Detail';
-import Password from '../page/user/Password';
+// import ReportList from '../page/report/List';
+// import UserDetail from '../page/user/Detail';
+// import Password from '../page/user/Password';
 
 const Container = styled.main`
     width: 1100px;
@@ -24,9 +24,9 @@ const News = () => {
                     <Switch>
                         <Route exact={true} path='/news/list' component={NewsList} />
                         <Route exact={true} path='/news/:id' component={NewsDetail} />
-                        <Route exact={true} path='/user/detail' component={UserDetail} />
-                        <Route exact={true} path='/user/password' component={Password} />
-                        <Route exact={true} path='/report/list' component={ReportList} />
+                        {/* <Route exact={true} path='/user/detail' component={UserDetail} />
+                        <Route exact={true} path='/user/password' component={Password} /> */}
+                        {/* <Route exact={true} path='/report/list' component={ReportList} /> */}
                     </Switch>
                 </Col>
             </Row>

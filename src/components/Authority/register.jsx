@@ -128,7 +128,7 @@ class Register extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+            <Button type="primary" htmlType="submit" style={{ width: "100%" }} loading={authorityStore.loading}>
               注册
             </Button>
           </Form.Item>
