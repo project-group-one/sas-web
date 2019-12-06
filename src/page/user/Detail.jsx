@@ -175,7 +175,7 @@ class Detail extends Component {
                   initialValue: user.address
                 })(<Input />)}
               </FormItem>
-              <FormItem label={"身份证"}>
+              {/* <FormItem label={"身份证"}>
                 {getFieldDecorator("idCardPicture", {
                   rules: [
                     {
@@ -185,8 +185,8 @@ class Detail extends Component {
                   ],
                   initialValue: user.idCardPicture
                 })(<UploadImage />)}
-              </FormItem>
-              <FormItem label={"组织证件"}>
+              </FormItem> */}
+              {/* <FormItem label={"组织证件"}>
                 {getFieldDecorator("originationCertificatePicture", {
                   rules: [
                     {
@@ -196,7 +196,7 @@ class Detail extends Component {
                   ],
                   initialValue: user.originationCertificatePicture
                 })(<UploadImage />)}
-              </FormItem>
+              </FormItem> */}
               <Button htmlType="submit" type="primary">
                 保存
               </Button>

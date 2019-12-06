@@ -31,15 +31,13 @@ class Detail extends Component {
 
   render() {
     const {
-      form: { getFieldDecorator }
+      form: { getFieldDecorator },
+      userStore
     } = this.props;
-    return (
-      <Card size="small" title="身份验证">
-        <div
-          style={{ display: "flex", padding: "0 50px" }}
-          ref={this.getViewDom}
-        >
-          <Left>
+    const getContent = () => {
+      switch (userStore.user.verifyStatus) {
+        case 0:
+          return (
             <Form
               layout="vertical"
               onSubmit={this.handleSubmit}
@@ -87,7 +85,22 @@ class Detail extends Component {
                 保存
               </Button>
             </Form>
-          </Left>
+          );
+        case 1:
+          return <span style={{ color: "red" }}>审核中</span>;
+        case 2:
+          return <div style={{ color: "green" }}>身份已验证通过</div>;
+        default:
+          return "审核";
+      }
+    };
+    return (
+      <Card size="small" title="身份验证">
+        <div
+          style={{ display: "flex", padding: "0 50px" }}
+          ref={this.getViewDom}
+        >
+          <Left>{getContent()}</Left>
         </div>
       </Card>
     );
