@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { toJS } from "mobx";
+import { Link } from "react-router-dom";
 import { Carousel } from "antd";
 import { observer } from "mobx-react";
 import useStores from "~/hooks/useStores";
@@ -12,14 +12,28 @@ const Banner = () => {
   }, []);
   return (
     <Carousel autoplay>
-      {homeStore.banners.map((banner, index) => (
-        <div key={index}>
+      {homeStore.banners.map((banner, index) => {
+        const pic = (
           <div
             className="carousel-pic"
             style={{ backgroundImage: `url(${filePath}/${banner.imgUrl})` }}
           />
-        </div>
-      ))}
+        );
+
+        return banner.url ? (
+          banner.url.indexOf("http") > -1 ? (
+            <a key={index} href={banner.url}>
+              {pic}
+            </a>
+          ) : (
+            <Link key={index} to={banner.url}>
+              {pic}
+            </Link>
+          )
+        ) : (
+          <div key={index}>{pic}</div>
+        );
+      })}
       {/* <div className="carousel-pic-wrap">
         <div
           className="carousel-pic"
