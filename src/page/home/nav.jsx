@@ -2,6 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 
+const getLink = (url, children, className, rel = "noopener noreferrer") => {
+  return url.startsWith("http") ? (
+    <a href={url} className={className} target="_blank" rel={rel}>
+      {children}
+    </a>
+  ) : (
+    <Link to={url} className={className} target="_blank" rel={rel}>
+      {children}
+    </Link>
+  );
+};
+
 const links = [
   {
     name: "食品安全抽检报告",
@@ -13,7 +25,7 @@ const links = [
     enName: "Food safety spot check analysis",
     url: "",
     children: [
-      { name: "食品安全抽检分析", url: "http://120.26.79.122:8087/login" },
+      { name: "食品安全抽检分析", url: "http://120.26.79.122:8087/login" }
       // { name: "食品安全抽检分析2", url: "/" },
       // { name: "食品安全抽检分析3", url: "/" },
       // { name: "食品安全抽检分析4", url: "/" },
@@ -26,7 +38,7 @@ const links = [
     enName: "Food safety spot check evaluation",
     url: "",
     children: [
-      { name: "食品安全抽检评价", url: "http://120.26.79.122:8087" },
+      { name: "食品安全抽检评价", url: "http://120.26.79.122:8087" }
       // { name: "食品安全抽检评价2", url: "/" },
       // { name: "食品安全抽检评价3", url: "/" },
       // { name: "食品安全抽检评价4", url: "/" },
@@ -56,17 +68,7 @@ const Nav = () => {
     return (
       <Menu>
         {children.map(({ name, url }) => (
-          <Menu.Item key={name}>
-            {url.startsWith("http") ? (
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                {name}
-              </a>
-            ) : (
-              <Link to={url} target="_blank" rel="noopener noreferrer">
-                {name}
-              </Link>
-            )}
-          </Menu.Item>
+          <Menu.Item key={name}>{getLink(url, name)}</Menu.Item>
         ))}
       </Menu>
     );
@@ -89,17 +91,13 @@ const Nav = () => {
             </Dropdown>
           );
         }
-        return (
-          <Link
-            key={l.name}
-            className="home-nav-item"
-            to={l.url || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        return getLink(
+          l.url,
+          <>
             <p>{l.name}</p>
             <p>{l.enName}</p>
-          </Link>
+          </>,
+          "home-nav-item"
         );
       })}
     </div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { Divider, Input, Button } from "antd";
 import styled from "styled-components";
+import getDate from "~/util/getDate";
 import Comments from "../../components/Comments";
 
 const Title = styled.h1`
@@ -10,6 +11,10 @@ const Title = styled.h1`
   margin-bottom: 10px;
 `;
 const Content = styled.pre`
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 16px;
+  line-height: 36px;
   min-height: 300px;
   border-bottom: 1px solid #eee;
 `;
@@ -25,7 +30,7 @@ const Author = styled.span``;
 const CommentTitle = styled.h3`
   width: 500px;
   margin: 0 auto;
-`
+`;
 
 const defaultCurrent = {
   id: 1,
@@ -77,14 +82,14 @@ class Detail extends Component {
         />
         <Title>{current.title}</Title>
         <Meta>
-          <Time>{current.releaseTime}</Time>作者：
+          <Time>{getDate(current.releaseTime)}</Time>作者：
           <Author>{current.author}</Author>
         </Meta>
         <Content dangerouslySetInnerHTML={{ __html: current.content }} />
         <CommentTitle>评论</CommentTitle>
         {current.comments &&
           current.comments.map(comment => {
-            return <Comments key={comment.id + ''} data={comment} />;
+            return <Comments key={comment.id + ""} data={comment} />;
           })}
         {user ? (
           <div style={{ width: 500, margin: "0 auto", textAlign: "right" }}>

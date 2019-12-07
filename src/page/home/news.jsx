@@ -5,14 +5,15 @@ import useStores from '~/hooks/useStores'
 import { List } from 'antd'
 import NewsBanner from './newsBanner'
 import moment from 'moment'
+import getDate from '~/util/getDate'
 
 const News = () => {
     const { newsStore } = useStores()
     const renderExtra = time => {
         return (
             <div>
-                <p>{moment(time).format('YYYY-MM-DD')}</p>
-                <Link to="/news/list">more</Link>
+                <p>{moment(getDate(time)).format('YYYY-MM-DD')}</p>
+                {/* <Link to="/news/list">more</Link> */}
             </div>
         )
     }

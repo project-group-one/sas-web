@@ -17,25 +17,33 @@ const FoodRegulation = () => {
         {regulation.range && (
           <tr>
             <th>适用范围</th>
-            <td>{regulation.range}</td>
+            <td>
+              <pre>{regulation.range}</pre>
+            </td>
           </tr>
         )}
         {regulation.category && (
           <tr>
             <th>产品种类</th>
-            <td>{regulation.category}</td>
+            <td>
+              <pre>{regulation.category}</pre>
+            </td>
           </tr>
         )}
         {regulation.samplingBasis && (
           <tr>
             <th>抽检依据</th>
-            <td>{regulation.samplingBasis}</td>
+            <td>
+              <pre>{regulation.samplingBasis}</pre>
+            </td>
           </tr>
         )}
         {regulation.demand && (
           <tr>
             <th>抽检要求</th>
-            <td>{regulation.demand}</td>
+            <td>
+              <pre>{regulation.demand}</pre>
+            </td>
           </tr>
         )}
         {regulation.conclusion && (
@@ -43,7 +51,9 @@ const FoodRegulation = () => {
             <td colspan="2">
               <div>
                 <h4>判定原则与结论</h4>
-                <p>{regulation.conclusion}</p>
+                <p>
+                  <pre>{regulation.conclusion}</pre>
+                </p>
               </div>
             </td>
           </tr>
