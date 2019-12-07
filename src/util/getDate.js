@@ -1,5 +1,4 @@
 export default date => {
-  return date
-    ? date.slice(0, 3).join("-") + " " + date.slice(3).join(":")
-    : undefined;
+  if (!Array.isArray(date)) return date;
+  return date.slice(0, 3).join("-") + " " + date.slice(3).join(":");
 };
