@@ -78,7 +78,7 @@
     "test": "node scripts/test.js",
     "server": "node ./server.js",
     "pm2": "pm2 start ./server.js",
-    "pub": "npm run build && sh ./move.sh && sh ../start.sh"
+    "pub": "npm run build && sh ./move.sh && sh /opt/webapps/start.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
