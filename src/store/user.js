@@ -42,12 +42,12 @@ class User {
 
   @action
   async updatePwd({ oPwd, nPwd }) {
-    const {success, msg} = await updatePassword({ oPwd, nPwd });
+    const { success, msg } = await updatePassword({ oPwd, nPwd });
 
     if (!success) {
-      message.error(msg)
+      message.error(msg);
     } else {
-      message.success('修改成功')
+      message.success("修改成功");
     }
   }
 
@@ -68,6 +68,7 @@ class User {
     const res = await fetchOrganization(this.user.id);
 
     this.organization = res;
+    return res;
   }
 
   @action

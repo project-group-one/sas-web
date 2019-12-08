@@ -10,7 +10,7 @@ function handleSuccess(response) {
 }
 
 function handleError(error) {
-  const status = error.response.status;
+  const status = error.response ? error.response.status : undefined;
   switch (status) {
     case 400:
       message.error("非法请求");

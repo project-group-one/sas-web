@@ -25,7 +25,11 @@ class ListPagination extends Component {
     resultModalVisible: false
   };
   componentDidMount() {
-    this.props.reportStore.getReportList();
+    this.props.userStore.getOrganization().then(res => {
+      this.props.reportStore.getReportList({
+        orgId: res.id
+      });
+    });
   }
 
   handleCancel = () => {
@@ -71,8 +75,9 @@ class ListPagination extends Component {
           }
           footer={<Pagination {...paginationProps} />}
           dataSource={data.slice()}
-          renderItem={item => (
+          renderItem={(item, index) => (
             <List.Item
+              key={index}
               actions={[
                 <a onClick={() => this.handleCheckResult(item.id)}>
                   查看检测结果
