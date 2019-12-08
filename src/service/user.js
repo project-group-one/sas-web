@@ -8,7 +8,7 @@ export function find() {
 }
 
 export function update(data, id) {
-  return Request.put(`/api/user?mId=${id}&id=${id}`, data).then(
+  return Request.put(`/api/user/${id}?id=${id}`, data).then(
     ({ error }) => error
   );
 }

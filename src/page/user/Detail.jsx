@@ -71,8 +71,12 @@ const validatorPhone = (rule, value, callback) => {
 @Form.create()
 @observer
 class Detail extends Component {
+  state = {
+    isEdit: false
+  };
+
   componentDidMount() {
-    this.props.userStore.getUser()
+    this.props.userStore.getUser();
     // this.setBaseInfo();
   }
 
@@ -105,6 +109,9 @@ class Detail extends Component {
       if (!err) {
         const { user } = this.props.userStore;
         this.props.userStore.updateUser(values, user.id);
+        this.setState({
+          isEdit: false
+        });
       }
     });
   };
@@ -115,6 +122,7 @@ class Detail extends Component {
       userStore
     } = this.props;
     const { user } = userStore;
+    const { isEdit } = this.state;
 
     if (!user) return null;
 
@@ -130,7 +138,7 @@ class Detail extends Component {
               onSubmit={this.handleSubmit}
               hideRequiredMark
             >
-              <FormItem label={"邮箱"}>
+              {/* <FormItem label={"邮箱"}>
                 {getFieldDecorator("email", {
                   rules: [
                     {
@@ -139,8 +147,8 @@ class Detail extends Component {
                     }
                   ],
                   initialValue: user.email
-                })(<Input />)}
-              </FormItem>
+                })(<Input disabled={!isEdit}/>)}
+              </FormItem> */}
               <FormItem label={"昵称"}>
                 {getFieldDecorator("name", {
                   rules: [
@@ -150,7 +158,7 @@ class Detail extends Component {
                     }
                   ],
                   initialValue: user.name
-                })(<Input />)}
+                })(<Input disabled={!isEdit} />)}
               </FormItem>
               <FormItem label={"手机号码"}>
                 {getFieldDecorator("phone", {
@@ -162,7 +170,7 @@ class Detail extends Component {
                     // { validator: validatorPhone }
                   ],
                   initialValue: user.phone
-                })(<Input />)}
+                })(<Input disabled={!isEdit} />)}
               </FormItem>
               <FormItem label={"地址"}>
                 {getFieldDecorator("address", {
@@ -173,7 +181,7 @@ class Detail extends Component {
                     }
                   ],
                   initialValue: user.address
-                })(<Input />)}
+                })(<Input disabled={!isEdit} />)}
               </FormItem>
               {/* <FormItem label={"身份证"}>
                 {getFieldDecorator("idCardPicture", {
@@ -197,9 +205,21 @@ class Detail extends Component {
                   initialValue: user.originationCertificatePicture
                 })(<UploadImage />)}
               </FormItem> */}
-              <Button htmlType="submit" type="primary">
-                保存
-              </Button>
+              {this.state.isEdit ? (
+                <Button onClick={this.handleSubmit} type="primary">
+                  保存
+                </Button>
+              ) : (
+                <Button
+                  onClick={() =>
+                    this.setState({
+                      isEdit: true
+                    })
+                  }
+                >
+                  编辑
+                </Button>
+              )}
             </Form>
           </Left>
           {/* <Right>
